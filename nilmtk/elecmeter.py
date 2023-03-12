@@ -419,6 +419,7 @@ class ElecMeter(Hashable, Electric):
             kwargs.setdefault('resample', True)
 
         if kwargs.get('resample'):
+            # 这里是对resample的参数进行设置
             # Set default key word arguments for resampling.
             resample_kwargs = kwargs.setdefault('resample_kwargs', {})
             resample_kwargs.setdefault('fill_method', 'ffill')

@@ -209,8 +209,9 @@ class API():
             for building in d[dataset]['buildings']:
                 print("Loading building ... ",building)
                 train.set_window(start=d[dataset]['buildings'][building]['start_time'],end=d[dataset]['buildings'][building]['end_time'])
-                train_df = next(train.buildings[building].elec.mains().load(physical_quantity='power', ac_type=self.power['mains'], sample_period=self.sample_period))
-                train_df = train_df[[list(train_df.columns)[0]]]
+                # 根据指定的采样率取主表的数据
+                train_df = next(train.buildings[building].elec.mains().load(physical_quantity='power', ac_type=self.power['mains'], sample_period=self.sample_period)) 
+                train_df = train_df[[list(train_df.columns)[0]]]  # 这为什么只取了第一个功率呢，那如果主表和分表的功率类型顺序不一致或者表的类似不一致，就会造成数据不一致
                 appliance_readings = []
                 
                 for appliance_name in self.appliances:

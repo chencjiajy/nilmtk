@@ -3,7 +3,8 @@ import numpy as np
 from collections import Counter
 from warnings import warn
 import scipy.spatial as ss
-from scipy import fft
+# from scipy.fft import fft
+from numpy.fft import fft
 from pandas.plotting import lag_plot, autocorrelation_plot
 from scipy.special import digamma,gamma
 from math import log,pi
